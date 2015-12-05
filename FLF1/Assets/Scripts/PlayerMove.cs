@@ -124,6 +124,18 @@ public class PlayerMove : MonoBehaviour {
 			if (controller.collisions.above || controller.collisions.below) {
 				velocity.y = 0;
 			}
+
+
+
+
+		if (Input.GetButtonUp("NextItem"))
+		{
+			TimeManager.Instance.NextTime();
+		}
 		
+		if (Input.GetButtonUp("PreviousItem"))
+		{
+			TimeManager.Instance.PreviousTime();
+		}
     }
 }
