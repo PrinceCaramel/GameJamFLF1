@@ -83,7 +83,7 @@ public class PlayerMove : MonoBehaviour {
 		}
 
 
-        if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetButtonUp ("Jump"))
         {
             if (wallSliding)
             {
@@ -108,22 +108,21 @@ public class PlayerMove : MonoBehaviour {
                 velocity.y = maxJumpVelocity;
             }
         }
-				
-
-				//Jump
-				if (Input.GetKeyUp (KeyCode.Space)) {
-					if (velocity.y > minJumpVelocity) {
-						velocity.y = minJumpVelocity;
-					}
+		//Jump
+		if (Input.GetButtonUp ("Jump")) {
+			
+				if (velocity.y > minJumpVelocity) {
+					velocity.y = minJumpVelocity;
 				}
-
-				velocity.y += gravity * Time.deltaTime;
-				controller.Move (velocity * Time.deltaTime, input);
-		
-		
-			if (controller.collisions.above || controller.collisions.below) {
-				velocity.y = 0;
 			}
+
+			velocity.y += gravity * Time.deltaTime;
+			controller.Move (velocity * Time.deltaTime, input);
+	
+	
+		if (controller.collisions.above || controller.collisions.below) {
+			velocity.y = 0;
+		}
 		
     }
 }
