@@ -83,7 +83,7 @@ public class PlayerMove : MonoBehaviour {
 		}
 
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown("Jump"))
         {
             if (wallSliding)
             {
@@ -111,7 +111,7 @@ public class PlayerMove : MonoBehaviour {
 				
 
 				//Jump
-				if (Input.GetKeyUp (KeyCode.Space)) {
+				if (Input.GetButtonUp ("Jump")) {
 					if (velocity.y > minJumpVelocity) {
 						velocity.y = minJumpVelocity;
 					}
