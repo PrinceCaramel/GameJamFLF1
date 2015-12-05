@@ -110,20 +110,20 @@ public class PlayerMove : MonoBehaviour {
         }
 				
 
-				//Jump
-				if (Input.GetKeyUp (KeyCode.Space)) {
-					if (velocity.y > minJumpVelocity) {
-						velocity.y = minJumpVelocity;
-					}
-				}
-
-				velocity.y += gravity * Time.deltaTime;
-				controller.Move (velocity * Time.deltaTime, input);
-		
-		
-			if (controller.collisions.above || controller.collisions.below) {
-				velocity.y = 0;
+		//Jump
+		if (Input.GetKeyUp (KeyCode.Space)) {
+			if (velocity.y > minJumpVelocity) {
+				velocity.y = minJumpVelocity;
 			}
+		}
+
+		velocity.y += gravity * Time.deltaTime;
+		controller.Move (velocity * Time.deltaTime, input);
+		
+		
+	    if (controller.collisions.above || controller.collisions.below) {
+		    velocity.y = 0;
+	    }
 		
     }
 }
