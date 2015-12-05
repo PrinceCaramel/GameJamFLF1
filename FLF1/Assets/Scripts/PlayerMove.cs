@@ -50,6 +50,7 @@ public class PlayerMove : MonoBehaviour {
 
 	void Update() {
         
+
 		input = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
 		int wallDirX = (controller.collisions.left) ? -1 : 1;
 
@@ -80,24 +81,33 @@ public class PlayerMove : MonoBehaviour {
 			}
 				
 		}
-			
 
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			if (wallSliding) {
-				if (wallDirX == input.x) {
-					velocity.x = -wallDirX * wallJumpClimb.x;
-					velocity.y = wallJumpClimb.y;
-				} else if (input.x == 0) {
-					velocity.x = -wallDirX * wallJumpOff.x;
-					velocity.y = wallJumpOff.y;
-				} else {
-					velocity.x = -wallDirX * wallLeap.x;
-					velocity.y = wallLeap.y;
-				}
-			}
-			if (controller.collisions.below) {
-				velocity.y = maxJumpVelocity;
-			}
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (wallSliding)
+            {
+                if (wallDirX == input.x)
+                {
+                    velocity.x = -wallDirX * wallJumpClimb.x;
+                    velocity.y = wallJumpClimb.y;
+                }
+                else if (input.x == 0)
+                {
+                    velocity.x = -wallDirX * wallJumpOff.x;
+                    velocity.y = wallJumpOff.y;
+                }
+                else
+                {
+                    velocity.x = -wallDirX * wallLeap.x;
+                    velocity.y = wallLeap.y;
+                }
+            }
+            if (controller.collisions.below)
+            {
+                velocity.y = maxJumpVelocity;
+            }
+        }
 				
 
 				//Jump
@@ -109,7 +119,7 @@ public class PlayerMove : MonoBehaviour {
 
 				velocity.y += gravity * Time.deltaTime;
 				controller.Move (velocity * Time.deltaTime, input);
-		}
+		
 		
 			if (controller.collisions.above || controller.collisions.below) {
 				velocity.y = 0;
