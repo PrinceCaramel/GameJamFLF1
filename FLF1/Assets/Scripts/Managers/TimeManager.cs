@@ -115,16 +115,6 @@ public class TimeManager : MonoBehaviour {
 	// FIXME TEMPFIX
 	void Update()
 	{
-		if (Input.GetButtonUp("NextItem"))
-		{
-			TimeManager.Instance.NextTime();
-		}
-
-		if (Input.GetButtonUp("PreviousItem"))
-		{
-			TimeManager.Instance.PreviousTime();
-		}
-
 		if (Input.GetKeyUp(KeyCode.W))
 		{
 			AddEra();
