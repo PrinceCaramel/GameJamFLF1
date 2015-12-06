@@ -102,29 +102,19 @@ public class TimeManager : MonoBehaviour {
 	public void AddEra()
 	{
 		_numberOfEras++;
-		UIManager.Instance.Timeline.GetComponent<TimelineUI>().RefreshTimeline(this._numberOfEras);
+		UIManager.Instance.GetCanvas(UIManager.UIObjects.MAIN).GetComponent<MainUI>().RefreshTimeline(this._numberOfEras);
 	}
 
 	//FIXME usefull ?
 	public void SetNumberOfEras(int count)
 	{
 		_numberOfEras = count;
-		UIManager.Instance.Timeline.GetComponent<TimelineUI>().RefreshTimeline(this._numberOfEras);
+		UIManager.Instance.GetCanvas(UIManager.UIObjects.MAIN).GetComponent<MainUI>().RefreshTimeline(this._numberOfEras);
 	}
 
 	// FIXME TEMPFIX
 	void Update()
 	{
-		if (Input.GetButtonUp("NextItem"))
-		{
-			TimeManager.Instance.NextTime();
-		}
-
-		if (Input.GetButtonUp("PreviousItem"))
-		{
-			TimeManager.Instance.PreviousTime();
-		}
-
 		if (Input.GetKeyUp(KeyCode.W))
 		{
 			AddEra();

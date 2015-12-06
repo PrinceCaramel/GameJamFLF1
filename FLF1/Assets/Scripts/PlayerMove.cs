@@ -29,7 +29,7 @@ public class PlayerMove : MonoBehaviour {
 	float velocityXSmoothing;
 	
 	Controller2D controller;
-    
+
 
 	void Start() {
 		controller = GetComponent<Controller2D> ();
@@ -110,20 +110,20 @@ public class PlayerMove : MonoBehaviour {
         }
 				
 
-				//Jump
-				if (Input.GetButtonUp ("Jump")) {
-					if (velocity.y > minJumpVelocity) {
-						velocity.y = minJumpVelocity;
-					}
-				}
-
-				velocity.y += gravity * Time.deltaTime;
-				controller.Move (velocity * Time.deltaTime, input);
-		
-		
-			if (controller.collisions.above || controller.collisions.below) {
-				velocity.y = 0;
+		//Jump
+		if (Input.GetButtonUp ("Jump")) {
+			if (velocity.y > minJumpVelocity) {
+				velocity.y = minJumpVelocity;
 			}
+		}
+
+		velocity.y += gravity * Time.deltaTime;
+		controller.Move (velocity * Time.deltaTime, input);
+	
+	
+		if (controller.collisions.above || controller.collisions.below) {
+			velocity.y = 0;
+		}
 
 
 
@@ -137,5 +137,11 @@ public class PlayerMove : MonoBehaviour {
 		{
 			TimeManager.Instance.PreviousTime();
 		}
+
+		this.transform.localScale = new Vector3((Input.GetAxis("Horizontal") < -0.005f ? -1f : 1f),
+												this.transform.localScale.y,
+												this.transform.localScale.z);
+			
+
     }
 }

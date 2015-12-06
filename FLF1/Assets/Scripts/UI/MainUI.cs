@@ -1,21 +1,43 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
-public class TimelineUI : MonoBehaviour {
+public class MainUI : MonoBehaviour {
 
 	public GameObject linePrefab, periodPrefab;
-
 	public Transform TimelineParent;
+
+	public GameObject ItemRequiredPrefab;
+	public Transform ItemRequiredParent;
+
+	public Text Timer;
+	private float _timeForLevel;
+
 
 	// Use this for initialization
 	void Start ()
 	{
+		_timeForLevel = 91f;
+		this.Timer.text = getTime(_timeForLevel);
+
+		UIManager.Instance.RegisterCanvas(UIManager.UIObjects.MAIN, this.gameObject);
 		StartCoroutine("StartProcess");
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update ()
+	{
+		_timeForLevel -= Time.deltaTime;
+		this.Timer.text = getTime(_timeForLevel);
+	}
+
+	string getTime(float timer)
+	{
+		int min = (int)timer / 60;
+		int secondes = (int)timer %60;
+
+		string res = (min<10 ? "0" : "") + min + ":" + (secondes<10 ? "0" : "") + secondes;
+		return res;
 	}
 
 	public void RefreshTimeline(int count)
@@ -47,7 +69,6 @@ public class TimelineUI : MonoBehaviour {
 
 	IEnumerator StartProcess()
 	{
-//		int tmp = TimeManager.Instance.CurrentTime;
 		yield return new WaitForEndOfFrame();
 		RefreshTimeline(TimeManager.Instance.NumberOfEras);
 
