@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class MainUI : MonoBehaviour {
 
@@ -13,6 +14,7 @@ public class MainUI : MonoBehaviour {
 	public Text Timer;
 	private float _timeForLevel;
 
+	private Dictionary<ItemManager.Items, RequiredItemLine> _requiredObjects;
 
 	// Use this for initialization
 	void Start ()
@@ -39,6 +41,15 @@ public class MainUI : MonoBehaviour {
 		string res = (min<10 ? "0" : "") + min + ":" + (secondes<10 ? "0" : "") + secondes;
 		return res;
 	}
+
+	
+	IEnumerator StartProcess()
+	{
+		yield return new WaitForEndOfFrame();
+		RefreshTimeline(TimeManager.Instance.NumberOfEras);
+		
+	}
+
 
 	public void RefreshTimeline(int count)
 	{
@@ -67,10 +78,47 @@ public class MainUI : MonoBehaviour {
 	}
 
 
-	IEnumerator StartProcess()
-	{
-		yield return new WaitForEndOfFrame();
-		RefreshTimeline(TimeManager.Instance.NumberOfEras);
 
+	public void RefreshRequiredItems(Dictionary<ItemManager.Items, List<RequiredItem>> allItems)
+	{
+        // Destroy old required items
+		this._requiredObjects = new Dictionary<ItemManager.Items, RequiredItemLine>();
+		for (int cnt = 0; cnt < ItemRequiredParent.childCount; cnt++)
+        {
+            GameObject.Destroy(ItemRequiredParent.GetChild(cnt).gameObject);
+        }
+
+		Debug.Log(allItems.Keys.Count+ " items to collect to end the level");
+		foreach(ItemManager.Items key in allItems.Keys)
+		{
+			GameObject requiredLine = GameObject.Instantiate(ItemRequiredPrefab);
+			requiredLine.transform.SetParent(ItemRequiredParent, false);
+			requiredLine.GetComponent<RequiredItemLine>().Init(Resources.Load<Sprite>("ItemsIcons/" + key.ToString()), allItems[key].Count);
+
+			this._requiredObjects.Add(key, requiredLine.GetComponent<RequiredItemLine>());
+		}
+	}
+
+	public void OnItemActivated(ItemManager.Items item)
+	{
+		if (!this._requiredObjects.ContainsKey(item))
+		{
+			Debug.LogWarning("Not item " + item.ToString() + " in requiredItems");
+			return;
+		}
+
+		this._requiredObjects[item].Increment();
+
+		//for each new item activated we try to know if all items have been collected
+		bool isComplete = true;
+		foreach (RequiredItemLine obj in this._requiredObjects.Values)
+		{
+			isComplete &= obj.IsComplete;
+		}
+
+		if (isComplete)
+		{
+			GameObject.FindObjectOfType<PlayerMove>().EndOfLevel();
+		}
 	}
 }

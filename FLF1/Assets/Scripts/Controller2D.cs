@@ -65,16 +65,21 @@ public class Controller2D : RaycastController {
 				if (hit.distance == 0) {
 					continue;
 				}
+
+				if (hit.collider.tag == "Through") { continue;	}
 				
 				float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
 				
-				if (i == 0 && slopeAngle <= maxClimbAngle) {
-					if (collisions.descendingSlope) {
+				if (i == 0 && slopeAngle <= maxClimbAngle)
+				{
+					if (collisions.descendingSlope)
+					{
 						collisions.descendingSlope = false;
 						velocity = collisions.velocityOld;
 					}
 					float distanceToSlopeStart = 0;
-					if (slopeAngle != collisions.slopeAngleOld) {
+					if (slopeAngle != collisions.slopeAngleOld)
+					{
 						distanceToSlopeStart = hit.distance-skinWidth;
 						velocity.x -= distanceToSlopeStart * directionX;
 					}
@@ -82,11 +87,13 @@ public class Controller2D : RaycastController {
 					velocity.x += distanceToSlopeStart * directionX;
 				}
 				
-				if (!collisions.climbingSlope || slopeAngle > maxClimbAngle) {
+				if (!collisions.climbingSlope || slopeAngle > maxClimbAngle)
+				{
 					velocity.x = (hit.distance - skinWidth) * directionX;
 					rayLength = hit.distance;
 					
-					if (collisions.climbingSlope) {
+					if (collisions.climbingSlope)
+					{
 						velocity.y = Mathf.Tan(collisions.slopeAngle * Mathf.Deg2Rad) * Mathf.Abs(velocity.x);
 					}
 					
