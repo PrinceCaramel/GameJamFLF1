@@ -19,6 +19,7 @@ public class Tir_move : MonoBehaviour {
 		if (otherObj.gameObject.tag == "Player") {
 			print ("joueur touché");
 			Destroy(this.gameObject);
+			AnimationManager.Instance.SetAction(AnimationManager.ActionAnimation.DEATH);
         }
     }
 }
