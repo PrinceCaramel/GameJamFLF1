@@ -97,11 +97,11 @@ public class EnemyMove : RaycastController
             // Déplacement vers la position de tir
             float targetDistance = target.transform.position.x - gameObject.transform.position.x;
             direction = (targetDistance >= 0) ? 1 : -1;
+            percentBackToPosition = 0;
             if (!hadTarget)
             {
                 positionBeforeAttack = gameObject.transform.position;
                 hadTarget = true;
-                percentBackToPosition = 0;
             }
             if (-range < targetDistance && targetDistance < range)
             {
