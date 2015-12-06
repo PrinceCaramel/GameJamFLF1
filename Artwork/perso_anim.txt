@@ -10,3 +10,6 @@ Mort : 40-52
 Victoire : 53-62
 
 Magicien
+Move/Idle : 1-9
+Atk : 10-15
+Mort : 16-25

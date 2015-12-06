@@ -77,7 +77,7 @@ public class SubNPC : MonoBehaviour {
 				{
 				case "ADD_PERIOD" :
 					TimeManager.Instance.AddEra();
-					break;
+                    break;
 				case "PREVIOUS_ERA" :
 					TimeManager.Instance.PreviousTime();
 					break;

@@ -15,7 +15,7 @@ public class PopupFactoryManager : MonoBehaviour {
 
 	public StandardPopup OkWindow;
 
-	public Texture ValidateIcon, WarningIcon, ErrorIcon;
+    public Texture ValidateIcon, WarningIcon, ErrorIcon;
 
 	// instance of singleton
 	private static PopupFactoryManager _instance = null;
@@ -58,7 +58,7 @@ public class PopupFactoryManager : MonoBehaviour {
 	void Start()
 	{
 		this.OkWindow.gameObject.SetActive(false);
-	}
+    }
 
 	void TestEvent()
 	{
@@ -88,6 +88,7 @@ public class PopupFactoryManager : MonoBehaviour {
 		}
 		PopupPile.Add(attributes);
 	}
+    
 
 
 	/// <summary>
