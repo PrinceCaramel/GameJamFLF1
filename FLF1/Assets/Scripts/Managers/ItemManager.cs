@@ -22,7 +22,7 @@ public class ItemManager : MonoBehaviour {
 		}
 	}
 
-	public enum Items { NONE, POMME, CAROTTE, NPC }
+	public enum Items { NONE, POMME, CAROTTE, NPC, POIREAU }
 
     public Dictionary<Items, List<ItemContainer>> _itemsInScene; 
 	public Dictionary<Items, List<RequiredItem>> _requiredItems; 
