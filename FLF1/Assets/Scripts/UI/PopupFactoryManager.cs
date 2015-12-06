@@ -59,7 +59,7 @@ public class PopupFactoryManager : MonoBehaviour {
 	void Start()
 	{
 		this.OkWindow.gameObject.SetActive(false);
-        this.AchievePopup.gameObject.SetActive(false);
+        this.AchievePopup.popup.gameObject.SetActive(false);
     }
 
 	void TestEvent()
