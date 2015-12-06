@@ -30,8 +30,6 @@ public class PlayerMove : MonoBehaviour {
 	
 	Controller2D controller;
 
-	private float _lastPosX;
-    
 
 	void Start() {
 		controller = GetComponent<Controller2D> ();
@@ -47,7 +45,6 @@ public class PlayerMove : MonoBehaviour {
 		maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
 		minJumpVelocity = Mathf.Sqrt (2 * Mathf.Abs (gravity) * minJumpHeight);
 		//print ("Gravity: " + gravity + "  Jump Velocity: " + maxJumpVelocity);
-		_lastPosX = this.transform.position.x;
 	}
 	
 
