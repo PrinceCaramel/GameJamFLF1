@@ -1,3 +1,4 @@
+Hero
 Idle : 1-9
 Debut saut : 10-14
 En l'air : 15-18
@@ -7,3 +8,5 @@ Action : 28-33
 Chgt epoque : 34-39
 Mort : 40-52
 Victoire : 53-62
+
+Magicien
