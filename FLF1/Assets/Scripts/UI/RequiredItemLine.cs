@@ -26,7 +26,7 @@ public class RequiredItemLine : MonoBehaviour {
 
 		this._currentCount = 0;
 		this._totalCount = total;
-		this.Ratio.text = "0/" + total.ToString();
+		this.Ratio.text = _currentCount + "/" + total.ToString();
 	}
 
 	public void Increment()

@@ -1,0 +1,738 @@
+fileFormatVersion: 2
+guid: f9ac5be75136595428702fe75f8b1df5
+timeCreated: 1449368952
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Perso_chef_0
+    21300002: Perso_chef_1
+    21300004: Perso_chef_2
+    21300006: Perso_chef_3
+    21300008: Perso_chef_4
+    21300010: Perso_chef_5
+    21300012: Perso_chef_6
+    21300014: Perso_chef_7
+    21300016: Perso_chef_8
+    21300018: Perso_chef_9
+    21300020: Perso_chef_10
+    21300022: Perso_chef_11
+    21300024: Perso_chef_12
+    21300026: Perso_chef_13
+    21300028: Perso_chef_14
+    21300030: Perso_chef_15
+    21300032: Perso_chef_16
+    21300034: Perso_chef_17
+    21300036: Perso_chef_18
+    21300038: Perso_chef_19
+    21300040: Perso_chef_20
+    21300042: Perso_chef_21
+    21300044: Perso_chef_22
+    21300046: Perso_chef_23
+    21300048: Perso_chef_24
+    21300050: Perso_chef_25
+    21300052: Perso_chef_26
+    21300054: Perso_chef_27
+    21300056: Perso_chef_28
+    21300058: Perso_chef_29
+    21300060: Perso_chef_30
+    21300062: Perso_chef_31
+    21300064: Perso_chef_32
+    21300066: Perso_chef_33
+    21300068: Perso_chef_34
+    21300070: Perso_chef_35
+    21300072: Perso_chef_36
+    21300074: Perso_chef_37
+    21300076: Perso_chef_38
+    21300078: Perso_chef_39
+    21300080: Perso_chef_40
+    21300082: Perso_chef_41
+    21300084: Perso_chef_42
+    21300086: Perso_chef_43
+    21300088: Perso_chef_44
+    21300090: Perso_chef_45
+    21300092: Perso_chef_46
+    21300094: Perso_chef_47
+    21300096: Perso_chef_48
+    21300098: Perso_chef_49
+    21300100: Perso_chef_50
+    21300102: Perso_chef_51
+    21300104: Perso_chef_52
+    21300106: Perso_chef_53
+    21300108: Perso_chef_54
+    21300110: Perso_chef_55
+    21300112: Perso_chef_56
+    21300114: Perso_chef_57
+    21300116: Perso_chef_58
+    21300118: Perso_chef_59
+    21300120: Perso_chef_60
+    21300122: Perso_chef_61
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Perso_chef_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 4829
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_1
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 4829
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_2
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 4829
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_3
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 4829
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_4
+      rect:
+        serializedVersion: 2
+        x: 1209
+        y: 4829
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_5
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 4428
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_6
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 4428
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_7
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 4428
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_8
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 4428
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_9
+      rect:
+        serializedVersion: 2
+        x: 1209
+        y: 4428
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_10
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 4027
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_11
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 4027
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_12
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 4027
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_13
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 4027
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_14
+      rect:
+        serializedVersion: 2
+        x: 1209
+        y: 4027
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_15
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 3626
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_16
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 3626
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_17
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 3626
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_18
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 3626
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_19
+      rect:
+        serializedVersion: 2
+        x: 1209
+        y: 3626
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_20
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 3225
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_21
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 3225
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_22
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 3225
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_23
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 3225
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_24
+      rect:
+        serializedVersion: 2
+        x: 1209
+        y: 3225
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_25
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2824
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_26
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 2824
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_27
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 2824
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_28
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 2824
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_29
+      rect:
+        serializedVersion: 2
+        x: 1209
+        y: 2824
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_30
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2423
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_31
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 2423
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_32
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 2423
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_33
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 2423
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_34
+      rect:
+        serializedVersion: 2
+        x: 1209
+        y: 2423
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_35
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2022
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_36
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 2022
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_37
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 2022
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_38
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 2022
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_39
+      rect:
+        serializedVersion: 2
+        x: 1209
+        y: 2022
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_40
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1621
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_41
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 1621
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_42
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 1621
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_43
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 1621
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_44
+      rect:
+        serializedVersion: 2
+        x: 1209
+        y: 1621
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_45
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1220
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_46
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 1220
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_47
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 1220
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_48
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 1220
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_49
+      rect:
+        serializedVersion: 2
+        x: 1209
+        y: 1220
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_50
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 819
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_51
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 819
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_52
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 819
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_53
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 819
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_54
+      rect:
+        serializedVersion: 2
+        x: 1209
+        y: 819
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_55
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 418
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_56
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 418
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_57
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 418
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_58
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 418
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_59
+      rect:
+        serializedVersion: 2
+        x: 1209
+        y: 418
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_60
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 17
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Perso_chef_61
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 17
+        width: 302
+        height: 401
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
