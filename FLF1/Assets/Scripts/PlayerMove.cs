@@ -51,19 +51,20 @@ public class PlayerMove : MonoBehaviour {
 
 	void Awake ()
 	{
+        
 		// retrieve the correct gameobject
 		Object[] instance = GameObject.FindObjectsOfType(typeof(PlayerMove));
-		if(instance.Length > 1)
-		{
-			// destroy it if there is more than one easyaccessresources
-			Destroy(gameObject);
-		}
-		else
-		{
-			// set the _instance variable
-			_instance = (PlayerMove)instance[0];
-			DontDestroyOnLoad(this.gameObject);
-		}
+        if (instance.Length > 1)
+        {
+            // destroy it if there is more than one easyaccessresources
+            Destroy(gameObject);
+        }
+        else
+        {
+            // set the _instance variable
+            _instance = (PlayerMove)instance[0];
+            DontDestroyOnLoad(this.gameObject);
+        }
 	}
 
 	void Start() {
@@ -71,14 +72,7 @@ public class PlayerMove : MonoBehaviour {
         TimeManager.OnTimeChange += OnChangePeriod;
 
 		controller = GetComponent<Controller2D> ();
-		GameObject LocalCamera = GameObject.FindGameObjectWithTag ("MainCamera");
-		if (LocalCamera != null) {
-			Debug.Log ("found" + LocalCamera.name);
-			LocalCamera.SetActive (true);
-			LocalCamera.GetComponent<CameraFollow> ().target = gameObject.GetComponent<Controller2D> ();
-			LocalCamera.GetComponent<CameraFollow> ().enabled = true;
-		}
-        
+		
 		gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2);
 		maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
 		minJumpVelocity = Mathf.Sqrt (2 * Mathf.Abs (gravity) * minJumpHeight);
@@ -89,8 +83,6 @@ public class PlayerMove : MonoBehaviour {
 	
 
 	void Update() {
-
-
 
 		input = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
 		int wallDirX = (controller.collisions.left) ? -1 : 1;
@@ -247,7 +239,7 @@ public class PlayerMove : MonoBehaviour {
 
     }
 
-    void Reset()
+    public void Reset()
     {
         if (CurrentPlayerState != PlayerState.IDLE)
         {
@@ -259,10 +251,28 @@ public class PlayerMove : MonoBehaviour {
 		UIManager.Instance.GetCanvas(UIManager.UIObjects.MAIN).GetComponent<MainUI>().Reset();
     }
 
+    void OnLevelWasLoaded(int level)
+    {
+        SpawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
+
+        // Positionnement de la camera
+        GameObject LocalCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        if (LocalCamera != null)
+        {
+            LocalCamera.SetActive(true);
+            LocalCamera.GetComponent<CameraFollow>().target = gameObject.GetComponent<Controller2D>();
+            LocalCamera.GetComponent<CameraFollow>().enabled = true;
+        }
+
+        Reset();
+    }
+
     void NextLevel()
     {
         PlayerAnimator.SetTrigger("idle");
         CurrentPlayerState = PlayerState.IDLE;
+
+        GameManager.NextScene();
     }
 
     void OnChangePeriod(int newPeriod)
