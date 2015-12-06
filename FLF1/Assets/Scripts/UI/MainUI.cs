@@ -133,7 +133,11 @@ public class MainUI : MonoBehaviour {
 
 		if (isComplete)
 		{
+			AnimationManager.Instance.SetAction(AnimationManager.ActionAnimation.WIN);
 			GameObject.FindObjectOfType<PlayerMove>().EndOfLevel();
+
+			this.Timer.color = new Color( 0, 1f, 0);
+			this.TimerIcon.color = new Color( 0, 1f, 0);
 		}
 	}
 
