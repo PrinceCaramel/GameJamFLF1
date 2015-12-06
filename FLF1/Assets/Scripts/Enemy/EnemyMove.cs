@@ -26,11 +26,14 @@ public class EnemyMove : RaycastController
     int fromWaypointIndex;
     float percentBetweenWaypoints;
     float nextMoveTime;
-
+	double time_lastTir;	
+	public float tir_interval = 1f;
     List<PassengerMovement> passengerMovement;
     Dictionary<Transform, Controller2D> passengerDictionary = new Dictionary<Transform, Controller2D>();
 
     public GameObject target;
+
+	public GameObject prefab_balle;
 
     public override void Start()
     {
@@ -45,7 +48,7 @@ public class EnemyMove : RaycastController
             globalWaypoints[i] = localWaypoints[i] + transform.position;
         }
 
-        range = 2;
+		time_lastTir = Time.realtimeSinceStartup;
     }
 
     void Update()
@@ -105,7 +108,10 @@ public class EnemyMove : RaycastController
             }
             if (-range < targetDistance && targetDistance < range)
             {
-                Debug.Log("Feu !");
+				float time_now = Time.realtimeSinceStartup;
+				if (time_now > time_lastTir + tir_interval) {
+					LaunchTir();       
+				}
             }
             else
             {
@@ -286,4 +292,12 @@ public class EnemyMove : RaycastController
             }
         }
     }
+
+	void LaunchTir(){
+		time_lastTir =  Time.realtimeSinceStartup;
+		GameObject tir = Instantiate (prefab_balle);
+		tir.transform.position = this.transform.position + new Vector3(0.5f* direction,0,0);	
+		tir.GetComponent<Tir_move>().direction = direction;
+		Destroy(tir,10f);        
+	}
 }
