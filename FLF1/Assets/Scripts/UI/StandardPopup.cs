@@ -3,9 +3,7 @@ using System.Collections;
 
 public class StandardPopup : MonoBehaviour {
 	
-	public UnityEngine.UI.Text TitleComponent;
 	public UnityEngine.UI.Text ContentComponent;
-	public UnityEngine.UI.RawImage IconComponent;
 
 	private Animator _animator;
 	private float _timer = 0f;
@@ -39,15 +37,7 @@ public class StandardPopup : MonoBehaviour {
 	/// <param name="type">Type.</param>
 	public void SetIcon(PopupFactoryManager.IconType type)
 	{
-		switch(type)
-		{
-			case PopupFactoryManager.IconType.VALIDATE : IconComponent.texture = PopupFactoryManager.Instance.ValidateIcon;
-				break;
-			case PopupFactoryManager.IconType.WARNING : IconComponent.texture = PopupFactoryManager.Instance.WarningIcon;
-				break;
-			case PopupFactoryManager.IconType.ERROR : IconComponent.texture = PopupFactoryManager.Instance.ErrorIcon;
-				break;
-		}
+
 	}
 
 	private void SetTimer(float timer)
@@ -61,6 +51,7 @@ public class StandardPopup : MonoBehaviour {
 		if(_animator == null)
 			_animator = GetComponent<Animator>();
 
+
 		// set timer
 		if(Attributes.Timer != 0f)
 			SetTimer(Attributes.Timer);
@@ -69,14 +60,13 @@ public class StandardPopup : MonoBehaviour {
 		SetIcon(Attributes.Icon);
 
 		// set title and content
-		TitleComponent.text = Attributes.Title;
 		ContentComponent.text = Attributes.Content;
 
 		switch(Attributes.EffectType)
 		{
-			case PopupFactoryManager.AnimationEffectType.FADE : _animator.Play("FadeIn");
+			case PopupFactoryManager.AnimationEffectType.FADE : _animator.Play("PopupIn");
 				break;
-			case PopupFactoryManager.AnimationEffectType.SIMPLE_SLIDE : _animator.Play("FadeIn");
+			case PopupFactoryManager.AnimationEffectType.SIMPLE_SLIDE : _animator.Play("PopupIn");
 				break;
 		}
 	}
@@ -90,9 +80,9 @@ public class StandardPopup : MonoBehaviour {
 
 		switch(Attributes.EffectType)
 		{
-			case PopupFactoryManager.AnimationEffectType.FADE : animToPlay = "FadeOut";
+			case PopupFactoryManager.AnimationEffectType.FADE : animToPlay = "PopupOut";
 				break;
-			case PopupFactoryManager.AnimationEffectType.SIMPLE_SLIDE : animToPlay = "FadeOut";
+		case PopupFactoryManager.AnimationEffectType.SIMPLE_SLIDE : animToPlay = "PopupOut";
 				break;
 		}
 

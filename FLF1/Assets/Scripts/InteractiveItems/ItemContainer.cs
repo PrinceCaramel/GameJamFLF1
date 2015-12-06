@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ItemContainer : MonoBehaviour {
 
-	public GameObject[] PeriodItems;
+	[System.Serializable]
+	public struct ItemPeriode{public int Periode;public GameObject Item;}
+	public ItemPeriode[] PeriodItems;
 
 	//can be used as an identifier
 	protected ItemManager.Items _relativeItem;
@@ -28,9 +31,11 @@ public class ItemContainer : MonoBehaviour {
 
 	void ChangingTime(int newPeriod)
 	{
+
 		for (int i=0; i< PeriodItems.Length; i++)
 		{
-			PeriodItems[i].SetActive(i==TimeManager.Instance.CurrentTime);
+			if(PeriodItems[i].Item != null)
+				PeriodItems[i].Item.SetActive(PeriodItems[i].Periode == TimeManager.Instance.CurrentTime);
 		}
 	}
 
@@ -42,4 +47,6 @@ public class ItemContainer : MonoBehaviour {
 			ItemManager.Instance.RegisterItem(_relativeItem, this, isRequired);
 		}
 	}
+
+
 }
