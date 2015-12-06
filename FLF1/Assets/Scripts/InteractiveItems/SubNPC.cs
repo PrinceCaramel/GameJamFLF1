@@ -77,7 +77,11 @@ public class SubNPC : MonoBehaviour {
 				{
 				case "ADD_PERIOD" :
 					TimeManager.Instance.AddEra();
-                    break;
+                        PopupFactoryManager.Instance.AchievePopup.msgs.Add("Nouvelle periode acquise.");
+                        if (TimeManager.Instance.NumberOfEras <2)
+                            PopupFactoryManager.Instance.AchievePopup.msgs.Add("Voyagez dans le temps avec A et E.");
+                        PopupFactoryManager.Instance.AchievePopup.OpenPopup();
+                        break;
 				case "PREVIOUS_ERA" :
 					TimeManager.Instance.PreviousTime();
 					break;
