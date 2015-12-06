@@ -5,6 +5,9 @@ using System.Collections.Generic;
 [RequireComponent (typeof (Controller2D))]
 public class PlayerMove : MonoBehaviour {
 
+	public delegate void PlayerEvent();
+	public static event PlayerEvent PlayerAction; 
+
 	private static PlayerMove _instance;
 	public static PlayerMove Instance
 	{
@@ -171,7 +174,14 @@ public class PlayerMove : MonoBehaviour {
 			velocity.y = 0;
 		}
 
-
+		if (Input.GetButtonUp("Submit"))
+//		    ||)
+		{
+			if (PopupFactoryManager.Instance.IsAPopupActive ())
+			{
+				PopupFactoryManager.Instance.ValidateCurrentPopup();
+			}
+		}
 
 
 		if (Input.GetButtonUp("NextItem"))
@@ -240,6 +250,7 @@ public class PlayerMove : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.F))
         {
 			AnimationManager.Instance.SetAction(AnimationManager.ActionAnimation.ACTION);
+			if (PlayerAction != null)	{ PlayerAction(); }
         }
 
 

@@ -56,9 +56,6 @@ public class StandardPopup : MonoBehaviour {
 		if(Attributes.Timer != 0f)
 			SetTimer(Attributes.Timer);
 
-		// set icon
-		SetIcon(Attributes.Icon);
-
 		// set title and content
 		ContentComponent.text = Attributes.Content;
 
@@ -118,14 +115,13 @@ public class StandardPopupAttributes
 
 	public PopupType TypeOfPopup;
 	
-	private PopupFactoryManager.IconType _icon;
 	private PopupFactoryManager.AnimationEffectType _effectType;
 
 	public delegate void OkEvent();
 	public event OkEvent OkClickEvent;
 
 	private float _timer = 0f;
-	private string _title, _content;
+	private string _content;
 
 	public float Timer {
 		get {
@@ -133,15 +129,6 @@ public class StandardPopupAttributes
 		}
 		set {
 			_timer = value;
-		}
-	}
-	
-	public string Title {
-		get {
-			return _title;
-		}
-		set {
-			_title = value;
 		}
 	}
 	
@@ -153,15 +140,7 @@ public class StandardPopupAttributes
 			_content = value;
 		}
 	}
-	
-	public PopupFactoryManager.IconType Icon {
-		get {
-			return _icon;
-		}
-		set {
-			_icon = value;
-		}
-	}
+
 	
 	public PopupFactoryManager.AnimationEffectType EffectType {
 		get {

@@ -65,16 +65,13 @@ public class PopupFactoryManager : MonoBehaviour {
 		Debug.Log("TestEvent !!!!");
 	}
 
-	public void InvokeOKPopup(string title, string innerText, StandardPopupAttributes.OkEvent EventMethod = null,
-	                          AnimationEffectType effectType = AnimationEffectType.FADE, IconType icon = IconType.NONE)
+	public void InvokeOKPopup(string innerText, StandardPopupAttributes.OkEvent EventMethod = null, AnimationEffectType effectType = AnimationEffectType.FADE)
 	{
 		StandardPopupAttributes attributes = new StandardPopupAttributes();
 		
 		attributes.TypeOfPopup = StandardPopupAttributes.PopupType.OK_WINDOW;
-		attributes.Title = title;
 		attributes.Content = innerText;
 		attributes.EffectType = effectType;
-		attributes.Icon = icon;
 		attributes.OkClickEvent += EventMethod;
 
 		if(!IsAPopupActive())
@@ -107,6 +104,12 @@ public class PopupFactoryManager : MonoBehaviour {
 		popup.LaunchPopup();
 	}
 
+	public void ValidateCurrentPopup()
+	{
+		OkWindow.OkButtonActivation();
+	}
+
+
 	/// <summary>
 	/// Get a popup from his type.
 	/// </summary>
@@ -129,7 +132,7 @@ public class PopupFactoryManager : MonoBehaviour {
 	/// Determines if we have a popup active.
 	/// </summary>
 	/// <returns><c>true</c> if this instance have a popup active; otherwise, <c>false</c>.</returns>
-	private bool IsAPopupActive()
+	public bool IsAPopupActive()
 	{
 		bool isActive = false;
 
