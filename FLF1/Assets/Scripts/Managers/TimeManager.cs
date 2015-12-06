@@ -98,7 +98,6 @@ public class TimeManager : MonoBehaviour {
 		Debug.Log("going on previous Era : " + this._currentTime);
 	}
 
-	//FIXME usefull ?
 	public void AddEra()
 	{
 		_numberOfEras++;
@@ -115,9 +114,9 @@ public class TimeManager : MonoBehaviour {
 	// FIXME TEMPFIX
 	void Update()
 	{
-		if (Input.GetKeyUp(KeyCode.W))
-		{
-			AddEra();
-		}
+//		if (Input.GetKeyUp(KeyCode.W))
+//		{
+//			AddEra();
+//		}
 	}
 }
