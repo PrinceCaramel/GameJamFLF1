@@ -91,8 +91,14 @@ public class PlayerMove : MonoBehaviour {
 	void Update() {
 
 
-
-		input = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
+		if (this.CurrentPlayerState == PlayerState.WIN || this.CurrentPlayerState == PlayerState.DEATH)
+		{
+			input = Vector2.zero;
+		}
+		else
+		{
+			input = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
+		}
 		int wallDirX = (controller.collisions.left) ? -1 : 1;
 
 

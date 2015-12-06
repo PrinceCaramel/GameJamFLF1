@@ -3,11 +3,8 @@ using System.Collections;
 
 public class RequiredItem : ItemContainer
 {
-	public ItemManager.Items MyItem;
-
 	protected override void initialize()
 	{
-		this._relativeItem = MyItem;
 		this.isRequired = true;
 		base.initialize();
 	}
@@ -19,7 +16,7 @@ public class RequiredItem : ItemContainer
 
 	public void Activate()
 	{
-		UIManager.Instance.GetCanvas(UIManager.UIObjects.MAIN).GetComponent<MainUI>().OnItemActivated(this._relativeItem);
+		UIManager.Instance.GetCanvas(UIManager.UIObjects.MAIN).GetComponent<MainUI>().OnItemActivated(this.RelativeItem);
 		Destroy(this.gameObject);
 	}
 }
