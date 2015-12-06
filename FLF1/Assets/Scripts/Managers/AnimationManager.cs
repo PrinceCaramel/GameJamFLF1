@@ -37,13 +37,13 @@ public class AnimationManager : MonoBehaviour {
 
 
 	// Save Animation HashName
-	static int idleState = Animator.StringToHash("Base Layer.PlayerIdle"); //these names must be the same as in Animator
-	static int moveState = Animator.StringToHash("Base Layer.Move.PlayerStartMove");
-	static int jumpState = Animator.StringToHash("Base Layer.Jump.PlayerJump");
-	static int winState = Animator.StringToHash("Base Layer.PlayerWin");
-	static int actionState = Animator.StringToHash("Base Layer.PlayerAction");
-	static int deathState = Animator.StringToHash("Base Layer.PlayerDeath");
-	static int timeState = Animator.StringToHash("Base Layer.PlayerTravelTime");
+//	static int idleState = Animator.StringToHash("Base Layer.PlayerIdle"); //these names must be the same as in Animator
+//	static int moveState = Animator.StringToHash("Base Layer.Move.PlayerStartMove");
+//	static int jumpState = Animator.StringToHash("Base Layer.Jump.PlayerJump");
+//	static int winState = Animator.StringToHash("Base Layer.PlayerWin");
+//	static int actionState = Animator.StringToHash("Base Layer.PlayerAction");
+//	static int deathState = Animator.StringToHash("Base Layer.PlayerDeath");
+//	static int timeState = Animator.StringToHash("Base Layer.PlayerTravelTime");
 
 	public enum ActionAnimation { IDLE, MOVE, JUMP, ACTION, CHANGE_TIME, WIN, DEATH }
 

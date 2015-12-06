@@ -9,8 +9,7 @@ public class ItemContainer : MonoBehaviour {
 	public ItemPeriode[] PeriodItems;
 
 	//can be used as an identifier
-	protected ItemManager.Items _relativeItem;
-	public ItemManager.Items RelativeItem { get { return _relativeItem; } }
+	public ItemManager.Items RelativeItem;
 
 	protected bool isRequired = false;
 
@@ -25,7 +24,8 @@ public class ItemContainer : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 	
 	}
 
@@ -42,9 +42,9 @@ public class ItemContainer : MonoBehaviour {
 	protected virtual void initialize()
 	{
 		//this must be done AFTER sub-class set its _relativeMenu identifier
-		if (_relativeItem != ItemManager.Items.NONE)
+		if (RelativeItem != ItemManager.Items.NONE)
 		{
-			ItemManager.Instance.RegisterItem(_relativeItem, this, isRequired);
+			ItemManager.Instance.RegisterItem(RelativeItem, this, isRequired);
 		}
 	}
 
