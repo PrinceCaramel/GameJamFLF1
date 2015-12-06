@@ -5,7 +5,7 @@ using System.Collections.Generic;
 [RequireComponent (typeof (Controller2D))]
 public class PlayerMove : MonoBehaviour {
 
-    public enum PlayerState {IDLE, MOVE, JUMP}
+    public enum PlayerState {IDLE, MOVE, JUMP, DEATH, WIN}
     public PlayerState CurrentPlayerState = PlayerState.IDLE;
     
     public float maxJumpHeight = 4;
@@ -13,7 +13,7 @@ public class PlayerMove : MonoBehaviour {
 	public float timeToJumpApex = .4f;
 	float accelerationTimeAirborne = .2f;
 	float accelerationTimeGrounded = .1f;
-	float moveSpeed = 6;
+	public float moveSpeed = 6;
 	
 	public Vector2 wallJumpClimb;
 	public Vector2 wallJumpOff;
@@ -29,6 +29,7 @@ public class PlayerMove : MonoBehaviour {
 	float minJumpVelocity;
 	Vector3 velocity;
 	float velocityXSmoothing;
+    private bool isLeft = false;
 	
 	Controller2D controller;
 
@@ -36,6 +37,7 @@ public class PlayerMove : MonoBehaviour {
 
 	void Start() {
         this.CurrentPlayerState = PlayerState.IDLE;
+        TimeManager.OnTimeChange += OnChangePeriod;
 
 		controller = GetComponent<Controller2D> ();
 		GameObject LocalCamera = GameObject.FindGameObjectWithTag ("MainCamera");
@@ -56,7 +58,8 @@ public class PlayerMove : MonoBehaviour {
 	
 
 	void Update() {
-        
+
+
 
 		input = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
 		int wallDirX = (controller.collisions.left) ? -1 : 1;
@@ -67,7 +70,8 @@ public class PlayerMove : MonoBehaviour {
 			
 		bool wallSliding = false;
 
-		if ((controller.collisions.left || controller.collisions.right) && !controller.collisions.below && velocity.y < 0) {
+		if ((controller.collisions.left || controller.collisions.right) && !controller.collisions.below && velocity.y < 0)
+		{
 			wallSliding = true;
 				
 			if (velocity.y < -wallSlideSpeedMax) {
@@ -150,48 +154,98 @@ public class PlayerMove : MonoBehaviour {
 		}
 
         // ANIMATION PART
+        if (Input.GetAxis("Horizontal") < 0) { isLeft = true; }
+        if (Input.GetAxis("Horizontal") > 0) { isLeft = false; }
 
         // scale -1 is player is going to the left
-		this.transform.localScale = new Vector3((Input.GetAxis("Horizontal") < -0.005f ? -1f : 1f),
+		this.transform.localScale = new Vector3((isLeft ? -1f : 1f),
 												this.transform.localScale.y,
 												this.transform.localScale.z);
 			
         if (_playerAnimator == null)    { _playerAnimator = this.GetComponent<Animator>(); }
-        if (CurrentPlayerState == PlayerState.IDLE)     //if player in idle
+        switch (CurrentPlayerState)
         {
-            if (Input.GetAxis("Horizontal") != 0)       //in idle and moving => set in anim move
-            {
-                CurrentPlayerState = PlayerState.MOVE;
-                _playerAnimator.SetTrigger("move");
-            }
-            else if (Input.GetButtonDown("Jump"))       //in idle and jumping => set in anim jump
-            {
-                CurrentPlayerState = PlayerState.JUMP;
-                _playerAnimator.SetTrigger("jump");
-            }
-        }
-        else if (CurrentPlayerState == PlayerState.MOVE)
-        {
-            if (Input.GetAxis("Horizontal") == 0)       //in move and stop moving => set in anim idle
-            {
-                CurrentPlayerState = PlayerState.IDLE;
-                _playerAnimator.SetTrigger("idle");
-            }
-            else if (Input.GetButtonDown("Jump"))       //in move and jumping => set in anim jump
-            {
-                CurrentPlayerState = PlayerState.JUMP;
-                _playerAnimator.SetTrigger("jump");
-            }
-        }
-        else if (CurrentPlayerState == PlayerState.JUMP)
-        {
-            if (controller.collisions.below)            //in jump and touching ground => stop fall in anim and set idle or move
-            {
-                bool isMoving = Input.GetAxis("Horizontal") != 0;
-                CurrentPlayerState = (isMoving ? PlayerState.MOVE : PlayerState.IDLE);
-                _playerAnimator.SetTrigger(isMoving ? "move" : "idle");
-            }
+            case PlayerState.IDLE :
+                if (Input.GetAxis("Horizontal") != 0)       //in idle and moving => set in anim move
+                {
+                    CurrentPlayerState = PlayerState.MOVE;
+                    _playerAnimator.SetTrigger("move");
+                }
+                else if (Input.GetButtonDown("Jump"))       //in idle and jumping => set in anim jump
+                {
+                    CurrentPlayerState = PlayerState.JUMP;
+                    _playerAnimator.SetTrigger("jump");
+                }
+                break;
+
+            case PlayerState.MOVE :
+                if (Input.GetAxis("Horizontal") == 0)       //in move and stop moving => set in anim idle
+                {
+                    CurrentPlayerState = PlayerState.IDLE;
+                    _playerAnimator.SetTrigger("idle");
+                }
+                else if (Input.GetButtonDown("Jump"))       //in move and jumping => set in anim jump
+                {
+                    CurrentPlayerState = PlayerState.JUMP;
+                    _playerAnimator.SetTrigger("jump");
+                }
+                break;
+
+            case PlayerState.JUMP :
+                if (controller.collisions.below)            //in jump and touching ground => stop fall in anim and set idle or move
+                {
+                    bool isMoving = Input.GetAxis("Horizontal") != 0;
+                    CurrentPlayerState = (isMoving ? PlayerState.MOVE : PlayerState.IDLE);
+                    _playerAnimator.SetTrigger(isMoving ? "move" : "idle");
+                }
+                break;
+
+            case PlayerState.WIN :
+                if (Input.GetKeyUp(KeyCode.Return))  {NextLevel(); }
+                break;
+
         }
 
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+			_playerAnimator.SetTrigger("actions");
+	
+            _playerAnimator.SetTrigger("action");
+            CurrentPlayerState = PlayerState.IDLE;
+        }
+
+
+        if (Input.GetKeyUp(KeyCode.R))  {Reset(); }
+
     }
+
+    void Reset()
+    {
+        if (CurrentPlayerState != PlayerState.IDLE)
+        {
+            _playerAnimator.SetTrigger("idle");
+            CurrentPlayerState = PlayerState.IDLE;
+        }
+    }
+
+    void NextLevel()
+    {
+        _playerAnimator.SetTrigger("idle");
+        CurrentPlayerState = PlayerState.IDLE;
+    }
+
+    void OnChangePeriod(int newPeriod)
+    {
+		_playerAnimator.SetTrigger("actions");
+        _playerAnimator.SetTrigger("changePeriod");
+        CurrentPlayerState = PlayerState.IDLE;
+    }
+
+	public void EndOfLevel()
+	{
+		_playerAnimator.SetTrigger("actions");
+		_playerAnimator.SetTrigger("win");
+
+		//FIXME what to do later ?
+	}
 }

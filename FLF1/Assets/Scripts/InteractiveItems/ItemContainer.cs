@@ -9,6 +9,8 @@ public class ItemContainer : MonoBehaviour {
 	protected ItemManager.Items _relativeItem;
 	public ItemManager.Items RelativeItem { get { return _relativeItem; } }
 
+	protected bool isRequired = false;
+
 
 	// Use this for initialization
 	void Start () {
@@ -37,7 +39,7 @@ public class ItemContainer : MonoBehaviour {
 		//this must be done AFTER sub-class set its _relativeMenu identifier
 		if (_relativeItem != ItemManager.Items.NONE)
 		{
-			ItemManager.Instance.RegisterItem(_relativeItem, this);
+			ItemManager.Instance.RegisterItem(_relativeItem, this, isRequired);
 		}
 	}
 }

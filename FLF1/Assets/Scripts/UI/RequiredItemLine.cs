@@ -46,4 +46,6 @@ public class RequiredItemLine : MonoBehaviour {
 			this.Ratio.color = Color.green;
 		}
 	}
+
+	public bool IsComplete	{ get { return (this._currentCount==this._totalCount); } }
 }
