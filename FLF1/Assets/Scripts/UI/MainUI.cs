@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class MainUI : MonoBehaviour {
 
@@ -40,6 +41,15 @@ public class MainUI : MonoBehaviour {
 		return res;
 	}
 
+	
+	IEnumerator StartProcess()
+	{
+		yield return new WaitForEndOfFrame();
+		RefreshTimeline(TimeManager.Instance.NumberOfEras);
+		
+	}
+
+
 	public void RefreshTimeline(int count)
 	{
 		// Destroy old timeline
@@ -67,10 +77,20 @@ public class MainUI : MonoBehaviour {
 	}
 
 
-	IEnumerator StartProcess()
-	{
-		yield return new WaitForEndOfFrame();
-		RefreshTimeline(TimeManager.Instance.NumberOfEras);
 
+	public void RefreshRequiredItems(Dictionary<ItemManager.Items, List<ItemContainer>> allItems)
+	{
+        // Destroy old required items
+        for (int cnt = 0; cnt < ItemRequiredParent.childCount; cnt++)
+        {
+            GameObject.Destroy(ItemRequiredParent.GetChild(cnt).gameObject);
+        }
+
+		foreach(ItemManager.Items key in allItems.Keys)
+		{
+			GameObject requiredLine = GameObject.Instantiate(ItemRequiredPrefab);
+			requiredLine.transform.SetParent(ItemRequiredParent, false);
+			requiredLine.GetComponent<RequiredItemLine>().Init(Resources.Load<Sprite>("ItemsIcons/" + key.ToString()), allItems[key].Count);
+		}
 	}
 }
