@@ -14,8 +14,9 @@ public class PopupFactoryManager : MonoBehaviour {
 	public static List<StandardPopupAttributes> PopupPile = new List<StandardPopupAttributes>();
 
 	public StandardPopup OkWindow;
+    public StandardPopup AchievePopup;
 
-	public Texture ValidateIcon, WarningIcon, ErrorIcon;
+    public Texture ValidateIcon, WarningIcon, ErrorIcon;
 
 	// instance of singleton
 	private static PopupFactoryManager _instance = null;
@@ -88,6 +89,30 @@ public class PopupFactoryManager : MonoBehaviour {
 		}
 		PopupPile.Add(attributes);
 	}
+
+    public void InvokeAchievementPopup(string innerText, StandardPopupAttributes.OkEvent EventMethod = null, AnimationEffectType effectType = AnimationEffectType.FADE)
+    {
+        StandardPopupAttributes attributes = new StandardPopupAttributes();
+
+        attributes.TypeOfPopup = StandardPopupAttributes.PopupType.OK_WINDOW;
+        attributes.Content = innerText;
+        attributes.EffectType = effectType;
+        attributes.OkClickEvent += EventMethod;
+
+        if (!IsAPopupActive())
+        {
+            AchievePopup.gameObject.SetActive(true);
+
+            AchievePopup.Attributes = attributes;
+        }
+
+        if (PopupPile.Count == 0)
+        {
+            OkWindow.LaunchPopup();
+            EnablePopupCounter++;
+        }
+        PopupPile.Add(attributes);
+    }
 
 
 	/// <summary>
