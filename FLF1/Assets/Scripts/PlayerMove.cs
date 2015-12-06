@@ -5,9 +5,23 @@ using System.Collections.Generic;
 [RequireComponent (typeof (Controller2D))]
 public class PlayerMove : MonoBehaviour {
 
+	private static PlayerMove _instance;
+	public static PlayerMove Instance
+	{
+		get {
+			if (_instance == null)
+			{
+				_instance = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>();
+			}
+			return _instance;
+		}
+	}
+
     public enum PlayerState {IDLE, MOVE, JUMP, DEATH, WIN}
     public PlayerState CurrentPlayerState = PlayerState.IDLE;
     
+	public GameObject SpawnPoint;
+
     public float maxJumpHeight = 4;
 	public float minJumpHeight = 1;
 	public float timeToJumpApex = .4f;
@@ -33,7 +47,24 @@ public class PlayerMove : MonoBehaviour {
 	
 	Controller2D controller;
 
-    private Animator _playerAnimator;
+    public Animator PlayerAnimator;
+
+	void Awake ()
+	{
+		// retrieve the correct gameobject
+		Object[] instance = GameObject.FindObjectsOfType(typeof(PlayerMove));
+		if(instance.Length > 1)
+		{
+			// destroy it if there is more than one easyaccessresources
+			Destroy(gameObject);
+		}
+		else
+		{
+			// set the _instance variable
+			_instance = (PlayerMove)instance[0];
+			DontDestroyOnLoad(this.gameObject);
+		}
+	}
 
 	void Start() {
         this.CurrentPlayerState = PlayerState.IDLE;
@@ -53,7 +84,7 @@ public class PlayerMove : MonoBehaviour {
 		minJumpVelocity = Mathf.Sqrt (2 * Mathf.Abs (gravity) * minJumpHeight);
 		//print ("Gravity: " + gravity + "  Jump Velocity: " + maxJumpVelocity);
 
-        _playerAnimator = this.GetComponent<Animator>();
+        PlayerAnimator = this.GetComponent<Animator>();
 	}
 	
 
@@ -162,19 +193,19 @@ public class PlayerMove : MonoBehaviour {
 												this.transform.localScale.y,
 												this.transform.localScale.z);
 			
-        if (_playerAnimator == null)    { _playerAnimator = this.GetComponent<Animator>(); }
+        if (PlayerAnimator == null)    { PlayerAnimator = this.GetComponent<Animator>(); }
         switch (CurrentPlayerState)
         {
             case PlayerState.IDLE :
                 if (Input.GetAxis("Horizontal") != 0)       //in idle and moving => set in anim move
                 {
                     CurrentPlayerState = PlayerState.MOVE;
-                    _playerAnimator.SetTrigger("move");
+                    PlayerAnimator.SetTrigger("move");
                 }
                 else if (Input.GetButtonDown("Jump"))       //in idle and jumping => set in anim jump
                 {
                     CurrentPlayerState = PlayerState.JUMP;
-                    _playerAnimator.SetTrigger("jump");
+                    PlayerAnimator.SetTrigger("jump");
                 }
                 break;
 
@@ -182,12 +213,12 @@ public class PlayerMove : MonoBehaviour {
                 if (Input.GetAxis("Horizontal") == 0)       //in move and stop moving => set in anim idle
                 {
                     CurrentPlayerState = PlayerState.IDLE;
-                    _playerAnimator.SetTrigger("idle");
+                    PlayerAnimator.SetTrigger("idle");
                 }
                 else if (Input.GetButtonDown("Jump"))       //in move and jumping => set in anim jump
                 {
                     CurrentPlayerState = PlayerState.JUMP;
-                    _playerAnimator.SetTrigger("jump");
+                    PlayerAnimator.SetTrigger("jump");
                 }
                 break;
 
@@ -196,7 +227,7 @@ public class PlayerMove : MonoBehaviour {
                 {
                     bool isMoving = Input.GetAxis("Horizontal") != 0;
                     CurrentPlayerState = (isMoving ? PlayerState.MOVE : PlayerState.IDLE);
-                    _playerAnimator.SetTrigger(isMoving ? "move" : "idle");
+                    PlayerAnimator.SetTrigger(isMoving ? "move" : "idle");
                 }
                 break;
 
@@ -208,10 +239,7 @@ public class PlayerMove : MonoBehaviour {
 
         if (Input.GetKeyUp(KeyCode.F))
         {
-			_playerAnimator.SetTrigger("actions");
-	
-            _playerAnimator.SetTrigger("action");
-            CurrentPlayerState = PlayerState.IDLE;
+			AnimationManager.Instance.SetAction(AnimationManager.ActionAnimation.ACTION);
         }
 
 
@@ -223,29 +251,35 @@ public class PlayerMove : MonoBehaviour {
     {
         if (CurrentPlayerState != PlayerState.IDLE)
         {
-            _playerAnimator.SetTrigger("idle");
+            PlayerAnimator.SetTrigger("idle");
             CurrentPlayerState = PlayerState.IDLE;
-        }
+		}
+		this.transform.position = this.SpawnPoint.transform.position;
+
+		UIManager.Instance.GetCanvas(UIManager.UIObjects.MAIN).GetComponent<MainUI>().Reset();
     }
 
     void NextLevel()
     {
-        _playerAnimator.SetTrigger("idle");
+        PlayerAnimator.SetTrigger("idle");
         CurrentPlayerState = PlayerState.IDLE;
     }
 
     void OnChangePeriod(int newPeriod)
     {
-		_playerAnimator.SetTrigger("actions");
-        _playerAnimator.SetTrigger("changePeriod");
-        CurrentPlayerState = PlayerState.IDLE;
+		AnimationManager.Instance.SetAction(AnimationManager.ActionAnimation.CHANGE_TIME);
     }
 
 	public void EndOfLevel()
 	{
-		_playerAnimator.SetTrigger("actions");
-		_playerAnimator.SetTrigger("win");
+		PlayerAnimator.SetTrigger("actions");
+		PlayerAnimator.SetTrigger("win");
 
 		//FIXME what to do later ?
+	}
+
+	public void SetState(PlayerState state)
+	{
+		this.CurrentPlayerState = state;
 	}
 }
