@@ -298,6 +298,6 @@ public class EnemyMove : RaycastController
 		GameObject tir = Instantiate (prefab_balle);
 		tir.transform.position = this.transform.position + new Vector3(0.5f* direction,0,0);	
 		tir.GetComponent<Tir_move>().direction = direction;
-		Destroy(tir,10f);        
+		Destroy(tir,2f);        
 	}
 }

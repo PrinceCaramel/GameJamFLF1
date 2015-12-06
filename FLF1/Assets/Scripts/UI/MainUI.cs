@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class MainUI : MonoBehaviour {
-
+	
 	public GameObject linePrefab, periodPrefab;
 	public Transform TimelineParent;
 
@@ -12,15 +12,18 @@ public class MainUI : MonoBehaviour {
 	public Transform ItemRequiredParent;
 
 	public Text Timer;
+	public Image TimerIcon;
 	private float _timeForLevel;
+
+	public const int TIME_FOR_LEVEL = 120;
 
 	private Dictionary<ItemManager.Items, RequiredItemLine> _requiredObjects;
 
 	// Use this for initialization
 	void Start ()
 	{
-		_timeForLevel = 91f;
-		this.Timer.text = getTime(_timeForLevel);
+		_timeForLevel = TIME_FOR_LEVEL;
+		this.setTime(_timeForLevel);
 
 		UIManager.Instance.RegisterCanvas(UIManager.UIObjects.MAIN, this.gameObject);
 		StartCoroutine("StartProcess");
@@ -29,17 +32,29 @@ public class MainUI : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		_timeForLevel -= Time.deltaTime;
-		this.Timer.text = getTime(_timeForLevel);
+		if (PlayerMove.Instance.CurrentPlayerState != PlayerMove.PlayerState.DEATH
+		    && PlayerMove.Instance.CurrentPlayerState != PlayerMove.PlayerState.WIN)
+		{
+			this.setTime(_timeForLevel);
+
+			_timeForLevel -= Time.deltaTime;
+	        if (this._timeForLevel <= 0)
+	        {
+				AnimationManager.Instance.SetAction(AnimationManager.ActionAnimation.DEATH);
+				this._timeForLevel = 0;
+	        }
+		}
 	}
 
-	string getTime(float timer)
+	void setTime(float timer)
 	{
 		int min = (int)timer / 60;
 		int secondes = (int)timer %60;
 
 		string res = (min<10 ? "0" : "") + min + ":" + (secondes<10 ? "0" : "") + secondes;
-		return res;
+		this.Timer.text = res;
+		this.Timer.color = new Color( 1, Mathf.Min(1f, timer/30f), Mathf.Min(1f, timer/30f));
+		this.TimerIcon.color = new Color( 1, Mathf.Min(1f, timer/30f), Mathf.Min(1f, timer/30f));
 	}
 
 	
@@ -120,5 +135,10 @@ public class MainUI : MonoBehaviour {
 		{
 			GameObject.FindObjectOfType<PlayerMove>().EndOfLevel();
 		}
+	}
+
+	public void Reset()
+	{
+		this._timeForLevel = TIME_FOR_LEVEL;
 	}
 }
