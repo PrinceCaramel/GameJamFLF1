@@ -47,11 +47,17 @@ public class Chargeur : MonoBehaviour {
             anim.SetInteger("status", 3);
             yield return new WaitForSeconds(0.3f);
             //On court jusqu'à trouver un obstacle
-            while (Physics2D.Raycast(transform.position, Vector2.right * direction, 1f).collider == null)
+            Collider2D obstacle;
+            while ((obstacle = Physics2D.Raycast(transform.position, Vector2.right * direction, 1f).collider) == null)
             {
                 transform.Translate(new Vector2(direction * speed * Time.deltaTime, 0));
                 
                 yield return null;
+            }
+
+            if (obstacle.gameObject.tag == "Player")
+            {
+                AnimationManager.Instance.SetAction(AnimationManager.ActionAnimation.DEATH);
             }
 
             // Fin du déplacement et animation de fin
